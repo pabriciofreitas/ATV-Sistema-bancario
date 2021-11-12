@@ -1,30 +1,43 @@
+
+import conta.Cliente;
+import conta.Conta;
+
+
+
+/**
+ *
+ * @author hevelin
+ */
 public class App {
-  public static void main(String[] args) throws Exception {
-    System.out.println("Hello, World!");
-    // List extratoCorrentista = []
-    // List listaDeCorrentista = correntista,atributo - extrado dentro da class
-    // correntista [] ]
-    // Conta fulano = new Conta(nome, a, b)
-    // criar um atributo de class static para gerenciar os número da conta
-    // criar class de extrato(remetente , destinatário, operacões (String))
 
-    // kleber
-    // print("PEssoa Juridica ou PEssoa fisica");
-    // Primeeiro menu - logiin(número da conta e código verificado)
-    // se adm cadastrar novo cliente e listar todos cliente, voltar pro menu de
-    // login e sair do programa
-    // se for cliente operações da conta. voltar pro menu de login e sair do
-    // programa
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        //cadstro o cliente
+        Cliente primeiroCliente = new  Cliente("Carlos", "785.695.216-32");
+         Cliente SegundoCliente = new  Cliente("Maria", "685.545.656-56");
+        
+        // Na hora de criar uma conta deve se adicionar CC para conta corrente e CP para conta poupança
 
-    // Marcos
-    // pessoa vai fica responsavel por criar class Cliente(atributos, contrustor,
-    // get e set e digita nomes das funcoes)
-    // Cadastro de COnta(clientes e contas): Cadastrar uma conta bancária com
-    // endereço, número, CPF ou CNPJ, nome do titular ou razão social, saldo e
-    // limite.
-
-    // Hevelin
-    // pessoa vai fica responsavel Class Conta
-    //
-  }
+      //Instancia a class
+        Conta conta01 = new Conta();
+         Conta conta02= new Conta();
+        
+         //cadstro a conta com os dados do cliente
+        conta01.criarConta(primeiroCliente, "CC");
+        conta02.criarConta(SegundoCliente, "CC");
+        
+        //DESPOISTAR
+        conta01.depsitar(1000);
+        
+        //mostrar conta depois do deposito 
+        conta01.mostrarConta();
+        conta02.mostrarConta();
+        
+       
+        
+    }
+    
 }
