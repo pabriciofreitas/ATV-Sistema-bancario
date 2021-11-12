@@ -1,23 +1,15 @@
-## Getting Started
+# # AV2: Sistema bancário
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Esse sistema deverá ser capaz de cadastrar correntistas, efetuar saques, depósitos e transferências. Deverá existir também um extrato para cada correntista.  
+  
+- Cadastro de correntistas (clientes e contas): Cadastrar uma conta bancária com endereço, número, CPF ou CNPJ, nome do titular ou razão social, saldo e limite. Não pode haver correntista repetido.  
+- Operações financeiras (saque, depósito, transferência): no caso da transferência, é a saída de dinheiro de uma conta para entrada em outra.  
+- Extrato: exibição de toda movimentação financeira de uma conta.
 
-## Folder Structure
 
-The workspace contains two folders by default, where:
+# Equipe
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
-
-jkjjhkj
-
-OI marcos fiz commit
-kkkkll
+ - Kleber
+ - Marcos
+ - Pabricio
+ - Hevelin
