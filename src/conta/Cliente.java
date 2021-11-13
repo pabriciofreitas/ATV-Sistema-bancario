@@ -8,12 +8,12 @@ package conta;
 public class Cliente {
 
     private String name;
-    private int CPF;
+    private String CPF;
     private String email;
     private String endereco;
 
     // criando construtor
-    public Cliente(String name, int CPF, String email, String endereco) {
+    public Cliente(String name, String CPF, String email, String endereco) {
         this.name = name;
         this.CPF = CPF;
         this.email = email;
@@ -29,7 +29,7 @@ public class Cliente {
         return name;
     }
 
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
