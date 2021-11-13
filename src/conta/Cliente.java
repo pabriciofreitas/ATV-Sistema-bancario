@@ -6,18 +6,16 @@ package conta;
  * @author hevelin
  */
 public class Cliente {
-    
-   private String name;
-   private String cpf;
-   private String email;
-    private String address;
-   
-   
+
+    private String name;
+    private String cpf;
+    private String email;
+    private String endereco;
 
     public Cliente(String name, String cpf) {
         this.name = name;
         this.cpf = cpf;
-       
+
     }
 
     public String getName() {
@@ -44,14 +42,12 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    
-    
 }
