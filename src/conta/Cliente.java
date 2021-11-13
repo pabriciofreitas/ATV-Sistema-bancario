@@ -8,13 +8,20 @@ package conta;
 public class Cliente {
 
     private String name;
-    private String cpf;
+    private int CPF;
     private String email;
     private String endereco;
 
-    public Cliente(String name, String cpf) {
+    // criando construtor
+    public Cliente(String name, int CPF, String email, String endereco) {
         this.name = name;
-        this.cpf = cpf;
+        this.CPF = CPF;
+        this.email = email;
+        this.endereco = endereco;
+    }
+
+    public boolean VerificarCPF() {
+        return false;
 
     }
 
@@ -22,16 +29,8 @@ public class Cliente {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public int getCPF() {
+        return CPF;
     }
 
     public String getEmail() {
