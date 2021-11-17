@@ -1,54 +1,53 @@
-package menu;
-
 import javax.swing.JOptionPane;
 
+public class App {
 
-public class Menu {
+  public static void novamente() {
 
-    public static void novamente(){
-        
-     int y = JOptionPane.showConfirmDialog(null, " DESEJA TENTAR NOVAMENTE ? ", "  ",  JOptionPane.YES_NO_OPTION);
-     if (y == JOptionPane.NO_OPTION){
-     JOptionPane.showMessageDialog(null,"PROGRAMA ENCERRADO");
-     }else{
-     login();
-     }
+    int y = JOptionPane.showConfirmDialog(null, " DESEJA TENTAR NOVAMENTE ? ", "  ", JOptionPane.YES_NO_OPTION);
+    if (y == JOptionPane.NO_OPTION) {
+      JOptionPane.showMessageDialog(null, "PROGRAMA ENCERRADO");
+    } else {
+      login();
     }
-    public static void sair(){
-        
-     int x = JOptionPane.showConfirmDialog(null, " DESEJA REALMENTE SAIR ? ", "  ",  JOptionPane.YES_NO_OPTION);
-     if (x == JOptionPane.YES_OPTION){
-     JOptionPane.showMessageDialog(null,"PROGRAMA ENCERRADO");
-     }else{
-     login();
-     }
+  }
+
+  public static void sair() {
+
+    int x = JOptionPane.showConfirmDialog(null, " DESEJA REALMENTE SAIR ? ", "  ", JOptionPane.YES_NO_OPTION);
+    if (x == JOptionPane.YES_OPTION) {
+      JOptionPane.showMessageDialog(null, "PROGRAMA ENCERRADO");
+    } else {
+      login();
     }
-    
-    
-    public static void login (){
-     int a = 0; 
-     int b = 0;
-        String id, senha; 
-       
-       id = JOptionPane.showInputDialog("DIGITE SEU LOGIN:");
-       senha = JOptionPane.showInputDialog("DIGITE SUA SENHA:");
-       if ("admin".equals(id) && "admin".equals(senha) ){
-          a = Integer.parseInt(JOptionPane.showInputDialog(null, "1 - ABRIR CONTA\n" + "2 - IMPRIMIR TODAS AS CONTAS\n" + "3 - SAIR"));
-          {  
-              if (a == 3){
-              sair();
-          }}
-        }else if ("123".equals(id) && "123".equals(senha)){
-          b = Integer.parseInt(JOptionPane.showInputDialog(null, "1 - SACAR\n" + "2 - DEPOSITAR\n" + "3 - TRANSFERIR\n" + "4 - EXTRATO\n" + "5 - SAIR\n"));
-        }if(b == 5){
-            sair();
-        }else{
-        JOptionPane.showMessageDialog(null, "LOGIN OU SENHA ESTÃO INCORRETOS", "ERRO", JOptionPane.ERROR_MESSAGE);
-        novamente();
-       }      
+  }
+
+  public static void login() {
+    int a = 0;
+    int b = 0;
+    String id, senha;
+
+    id = JOptionPane.showInputDialog("DIGITE SEU LOGIN:");
+    senha = JOptionPane.showInputDialog("DIGITE SUA SENHA:");
+    if ("admin".equals(id) && "admin".equals(senha)) {
+      a = Integer.parseInt(
+          JOptionPane.showInputDialog(null, "1 - ABRIR CONTA\n" + "2 - IMPRIMIR TODAS AS CONTAS\n" + "3 - SAIR"));
+      {
+        if (a == 3) {
+          sair();
+        }
+      }
+    } else if ("123".equals(id) && "123".equals(senha)) {
+      b = Integer.parseInt(JOptionPane.showInputDialog(null,
+          "1 - SACAR\n" + "2 - DEPOSITAR\n" + "3 - TRANSFERIR\n" + "4 - EXTRATO\n" + "5 - SAIR\n"));
     }
-    
-  
+    if (b == 5) {
+      sair();
+    } else {
+      JOptionPane.showMessageDialog(null, "LOGIN OU SENHA ESTÃO INCORRETOS", "ERRO", JOptionPane.ERROR_MESSAGE);
+      novamente();
+    }
+  }
 
   /**
    * @param args the command line arguments
