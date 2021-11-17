@@ -1,9 +1,8 @@
 import javax.swing.JOptionPane;
 
 public class App {
-
+  // ArrayList listaClientes=[];
   public static void novamente() {
-
     int y = JOptionPane.showConfirmDialog(null, " DESEJA TENTAR NOVAMENTE ? ", "  ", JOptionPane.YES_NO_OPTION);
     if (y == JOptionPane.NO_OPTION) {
       JOptionPane.showMessageDialog(null, "PROGRAMA ENCERRADO");
@@ -13,13 +12,22 @@ public class App {
   }
 
   public static void sair() {
-
     int x = JOptionPane.showConfirmDialog(null, " DESEJA REALMENTE SAIR ? ", "  ", JOptionPane.YES_NO_OPTION);
     if (x == JOptionPane.YES_OPTION) {
       JOptionPane.showMessageDialog(null, "PROGRAMA ENCERRADO");
     } else {
       login();
     }
+  }
+
+  public static void menuUsuario() {
+
+  }
+
+  public static void menuADM() {
+
+    int opcaoADM = Integer.parseInt(JOptionPane.showInputDialog(null,
+        "1 - ABRIR CONTA\n" + "2 - IMPRIMIR TODAS AS CONTAS\n" + "3 - VOLTAR  AO LOGIN" + "4 - SAIR"));
   }
 
   public static void login() {
@@ -30,8 +38,8 @@ public class App {
     id = JOptionPane.showInputDialog("DIGITE SEU LOGIN:");
     senha = JOptionPane.showInputDialog("DIGITE SUA SENHA:");
     if ("admin".equals(id) && "admin".equals(senha)) {
-      a = Integer.parseInt(
-          JOptionPane.showInputDialog(null, "1 - ABRIR CONTA\n" + "2 - IMPRIMIR TODAS AS CONTAS\n" + "3 - SAIR"));
+      a = Integer.parseInt(JOptionPane.showInputDialog(null,
+          "1 - CADASTRAR CLIENTE\n" + "1 - ABRIR CONTA\n" + "2 - IMPRIMIR TODAS AS CONTAS\n" + "3 - SAIR"));
       {
         if (a == 3) {
           sair();
@@ -47,6 +55,34 @@ public class App {
       JOptionPane.showMessageDialog(null, "LOGIN OU SENHA ESTÃO INCORRETOS", "ERRO", JOptionPane.ERROR_MESSAGE);
       novamente();
     }
+  }
+
+  // =============================================================######### FUNÇÃO
+  // DE ADM ==========================================
+  void abrirConta() {
+
+  }
+
+  void imprimirContas() {
+
+  }
+  // =============================================================######### FUNÇÃO
+  // DE CLIENTE ==========================================
+
+  void sacar() {
+
+  }
+
+  void depositar() {
+
+  }
+
+  void transferir() {
+
+  }
+
+  void extrato() {
+
   }
 
   /**
