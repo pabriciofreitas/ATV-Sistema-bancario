@@ -44,7 +44,7 @@ public class App {
         break;
       }
       case 6: {
-        opcaoUsuario = 6;
+        sair();
         break;
       }
       default: {
@@ -74,7 +74,7 @@ public class App {
         break;
       }
       case 5: {
-
+        sair();
         break;
       }
       default: {
