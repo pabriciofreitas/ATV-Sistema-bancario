@@ -23,9 +23,17 @@ public class App {
 
   public static void menuUsuario() {
     int opcaoUsuario = 0;
-    while (opcaoUsuario != 6) {
+    while (opcaoUsuario!=6) {
       opcaoUsuario = Integer.parseInt(JOptionPane.showInputDialog(null,
           "1 - SACAR\n" + "2 - DEPOSITAR\n" + "3 - TRANSFERIR\n" + "4 - EXTRATO\n" + "5 - DESLOGAR \n" + "6 - SAIR\n"));
+        if (opcaoUsuario == 5){
+          login();
+          break;
+        }
+         if (opcaoUsuario == 6){
+          sair();
+          break;
+        }
       switch (opcaoUsuario) {
       case 1: {
         sacar();
@@ -39,14 +47,14 @@ public class App {
       case 4: {
         extrato();
       }
-      case 5: {
-        login();
-        break;
-      }
-      case 6: {
-        sair();
-        break;
-      }
+      //case 5: {
+        //login();
+        //break;
+      //}
+      //case 6: {
+        //sair();
+        //break;
+      //}
       default: {
         JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA TENTE NOVAMENTE OU DIGITE 6 PARA SAIR");
       }
@@ -56,9 +64,17 @@ public class App {
 
   public static void menuADM() {
     int opcaoADM = 0;
-    while (opcaoADM != 5) {
+    while ( opcaoADM!= 5) {
       opcaoADM = Integer.parseInt(JOptionPane.showInputDialog(null, "1 - CADASTRAR CLIENTE\n" + "2 - ABRIR CONTA\n"
           + "3 - IMPRIMIR TODAS AS CONTAS\n" + "4 - DESLOGAR\n" + "5 - SAIR"));
+      if (opcaoADM == 4){
+        login();
+        break;
+      }
+       if (opcaoADM == 5){
+        sair();
+        break;
+      }
       switch (opcaoADM) {
       case 1: {
         cadastrarCliente();
@@ -69,14 +85,14 @@ public class App {
       case 3: {
         imprimirContas();
       }
-      case 4: {
-        login();
-        break;
-      }
-      case 5: {
-        sair();
-        break;
-      }
+      //case 4: {
+        //login();
+        //break;
+      //}
+      //case 5: {
+        //sair();
+        //break;
+      //}
       default: {
         JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA TENTE NOVAMENTE OU DIGITE 5 PARA SAIR");
       }
@@ -84,7 +100,7 @@ public class App {
     }
 
   }
-
+ 
   public static void login() {
     String id, senha;
     id = JOptionPane.showInputDialog("DIGITE SEU LOGIN:");
@@ -102,7 +118,7 @@ public class App {
   // =============================================================######### FUNÇÃO
   // DE ADM ==========================================
   public static void abrirConta() {
-
+      
   }
 
   public static void cadastrarCliente() {
