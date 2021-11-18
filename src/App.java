@@ -2,13 +2,14 @@ import javax.swing.JOptionPane;
 
 public class App {
   // ArrayList listaClientes=[];
-  public static void novamente() {
+  public static void tentaNovamente() {
     int y = JOptionPane.showConfirmDialog(null, " DESEJA TENTAR NOVAMENTE ? ", "  ", JOptionPane.YES_NO_OPTION);
     if (y == JOptionPane.NO_OPTION) {
       JOptionPane.showMessageDialog(null, "PROGRAMA ENCERRADO");
     } else {
       login();
     }
+
   }
 
   public static void sair() {
@@ -21,67 +22,113 @@ public class App {
   }
 
   public static void menuUsuario() {
-
+    int opcaoUsuario = 0;
+    while (opcaoUsuario != 6) {
+      opcaoUsuario = Integer.parseInt(JOptionPane.showInputDialog(null,
+          "1 - SACAR\n" + "2 - DEPOSITAR\n" + "3 - TRANSFERIR\n" + "4 - EXTRATO\n" + "5 - DESLOGAR \n" + "6 - SAIR\n"));
+      switch (opcaoUsuario) {
+      case 1: {
+        sacar();
+      }
+      case 2: {
+        depositar();
+      }
+      case 3: {
+        transferir();
+      }
+      case 4: {
+        extrato();
+      }
+      case 5: {
+        login();
+        break;
+      }
+      case 6: {
+        opcaoUsuario = 6;
+        break;
+      }
+      default: {
+        JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA TENTE NOVAMENTE OU DIGITE 6 PARA SAIR");
+      }
+      }
+    }
   }
 
   public static void menuADM() {
+    int opcaoADM = 0;
+    while (opcaoADM != 5) {
+      opcaoADM = Integer.parseInt(JOptionPane.showInputDialog(null, "1 - CADASTRAR CLIENTE\n" + "2 - ABRIR CONTA\n"
+          + "3 - IMPRIMIR TODAS AS CONTAS\n" + "4 - DESLOGAR\n" + "5 - SAIR"));
+      switch (opcaoADM) {
+      case 1: {
+        cadastrarCliente();
+      }
+      case 2: {
+        abrirConta();
+      }
+      case 3: {
+        imprimirContas();
+      }
+      case 4: {
+        login();
+        break;
+      }
+      case 5: {
 
-    int opcaoADM = Integer.parseInt(JOptionPane.showInputDialog(null,
-        "1 - ABRIR CONTA\n" + "2 - IMPRIMIR TODAS AS CONTAS\n" + "3 - VOLTAR  AO LOGIN" + "4 - SAIR"));
+        break;
+      }
+      default: {
+        JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA TENTE NOVAMENTE OU DIGITE 5 PARA SAIR");
+      }
+      }
+    }
+
   }
 
   public static void login() {
-    int a = 0;
-    int b = 0;
     String id, senha;
-
     id = JOptionPane.showInputDialog("DIGITE SEU LOGIN:");
     senha = JOptionPane.showInputDialog("DIGITE SUA SENHA:");
     if ("admin".equals(id) && "admin".equals(senha)) {
-      a = Integer.parseInt(JOptionPane.showInputDialog(null,
-          "1 - CADASTRAR CLIENTE\n" + "1 - ABRIR CONTA\n" + "2 - IMPRIMIR TODAS AS CONTAS\n" + "3 - SAIR"));
-      {
-        if (a == 3) {
-          sair();
-        }
-      }
+      menuADM();
     } else if ("123".equals(id) && "123".equals(senha)) {
-      b = Integer.parseInt(JOptionPane.showInputDialog(null,
-          "1 - SACAR\n" + "2 - DEPOSITAR\n" + "3 - TRANSFERIR\n" + "4 - EXTRATO\n" + "5 - SAIR\n"));
-    }
-    if (b == 5) {
-      sair();
+      menuUsuario();
     } else {
       JOptionPane.showMessageDialog(null, "LOGIN OU SENHA ESTÃO INCORRETOS", "ERRO", JOptionPane.ERROR_MESSAGE);
-      novamente();
+      tentaNovamente();
     }
   }
 
   // =============================================================######### FUNÇÃO
   // DE ADM ==========================================
-  void abrirConta() {
+  public static void abrirConta() {
 
   }
 
-  void imprimirContas() {
+  public static void cadastrarCliente() {
+
+  }
+
+  public static void imprimirContas() {
 
   }
   // =============================================================######### FUNÇÃO
   // DE CLIENTE ==========================================
 
-  void sacar() {
+  public static void sacar() {
+
+    JOptionPane.showMessageDialog(null, "saque bem sucessedido");
+  }
+
+  public static void depositar() {
 
   }
 
-  void depositar() {
+  public static void transferir() {
 
   }
 
-  void transferir() {
-
-  }
-
-  void extrato() {
+  public static void extrato() {
 
   }
 
@@ -90,6 +137,7 @@ public class App {
    */
   public static void main(String[] args) {
     login();
+
     /*
      * cadstro o cliente Cliente primeiroCliente = new Cliente("Carlos",
      * "785.695.216-32"); Cliente SegundoCliente = new Cliente("Maria",
