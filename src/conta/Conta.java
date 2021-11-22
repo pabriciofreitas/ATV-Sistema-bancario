@@ -33,11 +33,11 @@ public class Conta {
 
     // Cria umm conta e retona seu status true
     public void criarConta(Cliente titular, String tipo) {
-       this.titular = titular;
-       this.saldo = 50;
-       this.saldo = 500;
-       this.numConta = generator.nextInt(1000);
-       this.status = true;
+        this.titular = titular;
+        this.saldo = 50;
+        this.saldo = 500;
+        this.numConta = generator.nextInt(1000);
+        this.status = true;
     }
 
     // Fecha uma conta
@@ -55,7 +55,7 @@ public class Conta {
     // despositar um valor
     public void depositar(double valor) {
         if (this.status == true) {
-            this.saldo= this.saldo + valor;
+            this.saldo = this.saldo + valor;
         } else {
             System.out.println("Conta invalida, impossível depositar!");
         }
@@ -87,12 +87,12 @@ public class Conta {
         System.out.println("Transferência relaizada com sucesso!");
 
     }
-    
-     public Random getGenerator() {
+
+    public Random getGenerator() {
         return generator;
     }
 
-//     get e set
+    // get e set
 
     public double getSaldo() {
         return saldo;
@@ -118,7 +118,6 @@ public class Conta {
         this.titular = titular;
     }
 
-
     public String getTipo() {
         return tipo;
     }
@@ -127,7 +126,6 @@ public class Conta {
         this.tipo = tipo;
     }
 
-   
     public void setGenerator(Random generator) {
         this.generator = generator;
     }
@@ -139,7 +137,5 @@ public class Conta {
     private void setStatus(boolean status) {
         this.status = status;
     }
-
-    
 
 }

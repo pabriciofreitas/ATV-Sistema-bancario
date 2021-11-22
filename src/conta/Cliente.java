@@ -1,16 +1,14 @@
-package App;
+package conta;
 
 public class Cliente {
-    
-   private String name;
-   private String datansc;
-   private String email;
-   private String address;
-   private String telCel;
-   private String login;
-   private String senha;   
-    
-    
+
+    private String name;
+    private String datansc;
+    private String email;
+    private String address;
+    private String telCel;
+    private String login;
+    private String senha;
 
     public String getName() {
         return this.name;
@@ -21,11 +19,11 @@ public class Cliente {
     }
 
     public String getDatansc() {
-	return datansc;
+        return datansc;
     }
 
     public void setDatansc(String datensc) {
-       this.datansc = datansc;
+        this.datansc = datansc;
     }
 
     public String getEmail() {
@@ -45,28 +43,27 @@ public class Cliente {
     }
 
     public String getTelCel() {
-	return telCel;
+        return telCel;
     }
 
     public void setTelCel(String telCel) {
-	this.telCel = telCel;
+        this.telCel = telCel;
     }
 
-     public String getLogin() {
-	return login;
+    public String getLogin() {
+        return login;
     }
 
     public void setLogin(String login) {
-	this.login = login;
+        this.login = login;
     }
-    
-     public String getSenha() {
-	return senha;
+
+    public String getSenha() {
+        return senha;
     }
 
     public void setSenha(String senha) {
-	this.senha = senha;
+        this.senha = senha;
     }
-    
-    
+
 }
