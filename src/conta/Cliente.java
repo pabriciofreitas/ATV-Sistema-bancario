@@ -1,36 +1,31 @@
+package App;
 
-package conta;
-
-/**
- *
- * @author hevelin
- */
 public class Cliente {
-
-    private String name;
-    private String CPF;
-    private String email;
-    private String endereco;
-
-    // criando construtor
-    public Cliente(String name, String CPF, String email, String endereco) {
-        this.name = name;
-        this.CPF = CPF;
-        this.email = email;
-        this.endereco = endereco;
-    }
-
-    public boolean VerificarCPF() {
-        return false;
-
-    }
+    
+   private String name;
+   private String datansc;
+   private String email;
+   private String address;
+   private String telCel;
+   private String login;
+   private String senha;   
+    
+    
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public String getCPF() {
-        return CPF;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDatansc() {
+	return datansc;
+    }
+
+    public void setDatansc(String datensc) {
+       this.datansc = datansc;
     }
 
     public String getEmail() {
@@ -41,12 +36,37 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
+    public String getTelCel() {
+	return telCel;
+    }
+
+    public void setTelCel(String telCel) {
+	this.telCel = telCel;
+    }
+
+     public String getLogin() {
+	return login;
+    }
+
+    public void setLogin(String login) {
+	this.login = login;
+    }
+    
+     public String getSenha() {
+	return senha;
+    }
+
+    public void setSenha(String senha) {
+	this.senha = senha;
+    }
+    
+    
 }
