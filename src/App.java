@@ -151,7 +151,7 @@ public class App {
   public static Boolean verificarCliente(String id, String senha) {
     // lista[1,2,3] 3
     for (int index = 0; index < listaClientes.size(); index++) {
-      if (listaClientes.get(index).getLogin() == id && listaClientes.get(index).getSenha() == senha) {
+      if (listaClientes.get(index).getLogin().equals(id) && listaClientes.get(index).getSenha().equals(senha)) {
         clienteLogado = listaClientes.get(index);
         return true;
       }
