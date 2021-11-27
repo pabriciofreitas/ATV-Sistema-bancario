@@ -82,22 +82,17 @@ public class App {
   public static void menuADM() {
     int opcaoADM = 0;
     while (opcaoADM != 5) {
-      opcaoADM = Integer.parseInt(JOptionPane.showInputDialog(null, "2 - ABRIR CONTA\n"
-          + "\n" + "4 - DESLOGAR\n" + "5 - SAIR"));
-      if (opcaoADM == 4) {
+      opcaoADM = Integer.parseInt(JOptionPane.showInputDialog(null, "1 - ABRIR CONTA\n"+ "2 - DESLOGAR\n" + "3 - SAIR"));
+      if (opcaoADM == 2) {
         login();
         break;
       }
-      if (opcaoADM == 5) {
+      if (opcaoADM == 3) {
         sair();
         break;
       }
       switch (opcaoADM) {
         case 1: {
-          cadastrarCliente();
-          break;
-        }
-        case 2: {
           abrirConta();
           break;
         }
@@ -139,7 +134,7 @@ public class App {
   // =============================================================######### FUNÇÃO
   // DE ADM ==========================================
   public static void abrirConta() {
-    String tipoPessoa = JOptionPane.showInputDialog("Digite F para pessoa fisica e\nJ para juridica:"); // hevelin
+    String tipoPessoa = JOptionPane.showInputDialog("Digite:\n F para pessoa fisica\nJ para juridica"); // hevelin
     if ("F".equals(tipoPessoa) || "f".equals(tipoPessoa)) {
 
       String nomeTitular = JOptionPane.showInputDialog("> Nome: ");
