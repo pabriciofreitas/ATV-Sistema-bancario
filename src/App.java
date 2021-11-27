@@ -24,6 +24,16 @@ public class App {
     }
 
   }
+  
+   public static void tentaNovamenteTipo() {
+    int y = JOptionPane.showConfirmDialog(null, " DESEJA TENTAR NOVAMENTE ? ", "  ", JOptionPane.YES_NO_OPTION);
+    if (y == JOptionPane.NO_OPTION) {
+      JOptionPane.showMessageDialog(null, "VOLTANDO AO MENU...");
+    } else {
+      abrirConta();
+    }
+
+  }
 
   public static void sair() {
     int x = JOptionPane.showConfirmDialog(null, " DESEJA REALMENTE SAIR ? ", "  ", JOptionPane.YES_NO_OPTION);
@@ -134,7 +144,7 @@ public class App {
   // =============================================================######### FUNÇÃO
   // DE ADM ==========================================
   public static void abrirConta() {
-    String tipoPessoa = JOptionPane.showInputDialog("Digite:\n F para pessoa fisica\nJ para juridica"); // hevelin
+    String tipoPessoa = JOptionPane.showInputDialog("Digite:\n [F] para pessoa fisica\n [J] para juridica"); // hevelin
     if ("F".equals(tipoPessoa) || "f".equals(tipoPessoa)) {
 
       String nomeTitular = JOptionPane.showInputDialog("> Nome: ");
@@ -161,6 +171,9 @@ public class App {
       listaPessoaJuridica.add(newPessoaJuridica);
 
       System.out.println(listaPessoaJuridica.get(0).getConta().getNumConta());
+    }else{
+      JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA", "ERRO", JOptionPane.ERROR_MESSAGE);
+      tentaNovamenteTipo();
     }
 
     //
