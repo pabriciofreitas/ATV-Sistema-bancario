@@ -2,23 +2,29 @@ package conta;
 
 public class PessoaFisica extends Cliente {
 
-    private String cpf;
+    private String CPF;
+    String nomeTitular;
 
-    public PessoaFisica(String name, String datansc, String email, String cpf, String login, String senha) {
-        super(name, datansc, email, login, senha);
-        this.cpf = cpf;
+    public PessoaFisica(String endereco, String numeroTelefone, String CPF, String nomeTitular) {
+        super(endereco, numeroTelefone);
+        this.CPF = CPF;
+        this.nomeTitular = nomeTitular;
     }
 
-    public String getCpf() {
-        return this.cpf;
+    public String getNomeTitular() {
+        return this.nomeTitular;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setNomeTitular(String nomeTitular) {
+        this.nomeTitular = nomeTitular;
     }
 
-    public String returnPrint() {
-        return this.getName() + this.getDatansc() + this.getEmail();
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
 }

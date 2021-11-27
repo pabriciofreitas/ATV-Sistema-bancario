@@ -1,64 +1,63 @@
 package conta;
 
 public class Cliente {
+    // private String name;
+    private String endereco;
+    private String numeroTelefone;
+    private Conta conta = new Conta();
 
-    private String name;
-    private String datansc;
-    private String email;
-    private String login;
-    private String senha;
-
-    public Cliente(String name, String datansc, String email, String login, String senha) {
-        this.name = name;
-        this.datansc = datansc;
-        this.email = email;
-        this.setLogin(login);
-        this.setSenha(senha);
+    public Cliente(String endereco, String numeroTelefone) {
+        this.endereco = endereco;
+        this.numeroTelefone = numeroTelefone;
+        this.conta = conta;
     }
 
+    public Conta getConta() {
+        return this.conta;
+    }
     // private String address;
     // private String telCel;
 
-    public String getLogin() {
-        return this.login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return this.senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    // }
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDatansc() {
-        return datansc;
-    }
-
-    // public void setDatansc(String datensc) {
-    // this.datansc = datansc;
+    // public String getLogin() {
+    // return this.login;
     // }
 
-    public String getEmail() {
-        return email;
-    }
+    // public void setLogin(String login) {
+    // this.login = login;
+    // }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    // public String getSenha() {
+    // return this.senha;
+    // }
+
+    // public void setSenha(String senha) {
+    // this.senha = senha;
+    // }
+
+    // // }
+    // public String getName() {
+    // return this.name;
+    // }
+
+    // public void setName(String name) {
+    // this.name = name;
+    // }
+
+    // public String getDatansc() {
+    // return datansc;
+    // }
+
+    // // public void setDatansc(String datensc) {
+    // // this.datansc = datansc;
+    // // }
+
+    // public String getEmail() {
+    // return email;
+    // }
+
+    // public void setEmail(String email) {
+    // this.email = email;
+    // }
 
     // public String getAddress() {
     // return address;

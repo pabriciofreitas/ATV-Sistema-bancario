@@ -4,10 +4,13 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import conta.Cliente;
+import conta.Conta;
 import conta.PessoaFisica;
+import conta.PessoaJuridica;
 
 public class App {
-  public static List<Cliente> listaClientes = new ArrayList<>();
+  public static List<PessoaFisica> listaPessoaFisica = new ArrayList<>();
+  public static List<PessoaJuridica> listaPessoaJuridica = new ArrayList<>();
   public static Cliente clienteLogado;
   // PessoaFisica kleber = new PessoaFisica("nome", "cpf", "43124214", "421412",
   // "1234", "123");
@@ -45,33 +48,33 @@ public class App {
         break;
       }
       switch (opcaoUsuario) {
-      case 1: {
-        sacar();
-        break;
-      }
-      case 2: {
-        depositar();
-        break;
-      }
-      case 3: {
-        transferir();
-        break;
-      }
-      case 4: {
-        extrato();
-        break;
-      }
-      // case 5: {
-      // login();
-      // break;
-      // }
-      // case 6: {
-      // sair();
-      // break;
-      // }
-      default: {
-        JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA TENTE NOVAMENTE OU DIGITE 6 PARA SAIR");
-      }
+        case 1: {
+          sacar();
+          break;
+        }
+        case 2: {
+          depositar();
+          break;
+        }
+        case 3: {
+          transferir();
+          break;
+        }
+        case 4: {
+          extrato();
+          break;
+        }
+        // case 5: {
+        // login();
+        // break;
+        // }
+        // case 6: {
+        // sair();
+        // break;
+        // }
+        default: {
+          JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA TENTE NOVAMENTE OU DIGITE 6 PARA SAIR");
+        }
       }
     }
   }
@@ -79,8 +82,8 @@ public class App {
   public static void menuADM() {
     int opcaoADM = 0;
     while (opcaoADM != 5) {
-      opcaoADM = Integer.parseInt(JOptionPane.showInputDialog(null, "1 - CADASTRAR CLIENTE\n" + "2 - ABRIR CONTA\n"
-          + "3 - IMPRIMIR TODAS AS CONTAS\n" + "4 - DESLOGAR\n" + "5 - SAIR"));
+      opcaoADM = Integer.parseInt(JOptionPane.showInputDialog(null, "2 - ABRIR CONTA\n"
+          + "\n" + "4 - DESLOGAR\n" + "5 - SAIR"));
       if (opcaoADM == 4) {
         login();
         break;
@@ -90,42 +93,42 @@ public class App {
         break;
       }
       switch (opcaoADM) {
-      case 1: {
-        cadastrarCliente();
-        break;
-      }
-      case 2: {
-        abrirConta();
-        break;
-      }
-      case 3: {
-        // imprimirContas();
-        break;
-      }
-      // case 4: {
-      // login();
-      // break;
-      // }
-      // case 5: {
-      // sair();
-      // break;
-      // }
-      default: {
-        JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA TENTE NOVAMENTE OU DIGITE 5 PARA SAIR");
-      }
+        case 1: {
+          cadastrarCliente();
+          break;
+        }
+        case 2: {
+          abrirConta();
+          break;
+        }
+        case 3: {
+          // imprimirContas();
+          break;
+        }
+        // case 4: {
+        // login();
+        // break;
+        // }
+        // case 5: {
+        // sair();
+        // break;
+        // }
+        default: {
+          JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA TENTE NOVAMENTE OU DIGITE 5 PARA SAIR");
+        }
       }
     }
 
   }
 
   public static void login() {
-    String id, senha;
-    id = JOptionPane.showInputDialog("DIGITE SEU LOGIN:");
+    String CPF, senha;
+    CPF = JOptionPane.showInputDialog("DIGITE SEU CPF:");
     senha = JOptionPane.showInputDialog("DIGITE SUA SENHA:");
 
-    if ("admin".equals(id) && "admin".equals(senha)) {
+    if ("1".equals(CPF) && "1".equals(senha)) {
       menuADM();
-    } else if (verificarCliente(id, senha)) {
+    } else if (verificarCliente(CPF, senha)) {
       menuUsuario();
     } else {
       JOptionPane.showMessageDialog(null, "LOGIN OU SENHA ESTÃO INCORRETOS", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -136,12 +139,36 @@ public class App {
   // =============================================================######### FUNÇÃO
   // DE ADM ==========================================
   public static void abrirConta() {
-    // hevelin
-     PessoaFisica kleber = new PessoaFisica("nome", "cpf", "43124214", "421412", "123", "123");
-    listaClientes.add(kleber);
-    PessoaFisica pabricio = new PessoaFisica("nome", "cpf", "43124214", "421412", "1234", "1234");
-    listaClientes.add(pabricio);
-    System.out.println(listaClientes.get(0).getName());
+    String tipoPessoa = JOptionPane.showInputDialog("Digite F para pessoa fisica e\nJ para juridica:"); // hevelin
+    if ("F".equals(tipoPessoa) || "f".equals(tipoPessoa)) {
+
+      String nomeTitular = JOptionPane.showInputDialog("> Nome: ");
+      String CPF = JOptionPane.showInputDialog("> CPF: ");
+      String numeroTelefone = JOptionPane.showInputDialog("> Telefone: ");
+      String endereco = JOptionPane.showInputDialog("> Endereço: ");
+
+      PessoaFisica newPessoaFisica = new PessoaFisica(endereco, numeroTelefone, CPF, nomeTitular);
+      listaPessoaFisica.add(newPessoaFisica);
+      System.out.println(listaPessoaFisica.get(0).getNomeTitular());
+
+    } else if ("J".equals(tipoPessoa) || "j".equals(tipoPessoa)) {
+      // conta.PessoaJuridica.PessoaJuridica(String endereco, String numeroTelefonico,
+      // String CNPJ, String razaoSocial)
+      String razaoSocial = JOptionPane.showInputDialog("> Razão Social: ");
+      String CNPJ = JOptionPane.showInputDialog("> CNPJ: ");
+      String numeroTelefone = JOptionPane.showInputDialog("> Telefone: ");
+      String endereco = JOptionPane.showInputDialog("> Endereço: ");
+      int senha = Integer.parseInt(JOptionPane.showInputDialog("> senha: "));
+
+      PessoaJuridica newPessoaJuridica = new PessoaJuridica(endereco, numeroTelefone, CNPJ, razaoSocial);
+      Conta conta = newPessoaJuridica.getConta();
+      conta.AbrirConta(senha);
+      listaPessoaJuridica.add(newPessoaJuridica);
+
+      System.out.println(listaPessoaJuridica.get(0).getConta().getNumConta());
+    }
+
+    //
 
   }
 
@@ -152,12 +179,13 @@ public class App {
 
   public static Boolean verificarCliente(String id, String senha) {
     // lista[1,2,3] 3
-    for (int index = 0; index < listaClientes.size(); index++) {
-      if (listaClientes.get(index).getLogin().equals(id) && listaClientes.get(index).getSenha().equals(senha)) {
-        clienteLogado = listaClientes.get(index);
-        return true;
-      }
-    }
+    // for (int index = 0; index < listaClientes.size(); index++) {
+    // if (listaClientes.get(index).getCPF().equals(id) &&
+    // listaClientes.get(index).getSenha().equals(senha)) {
+    // clienteLogado = listaClientes.get(index);
+    // return true;
+    // }
+    // }
     return false;
   }
   // =============================================================######### FUNÇÃO

@@ -1,19 +1,21 @@
 package conta;
 
 public class PessoaJuridica extends Cliente {
-    private String cnpj;
+    private String razaoSocial;
+    private String CNPJ;
 
-    public PessoaJuridica(String name, String datansc, String email, String cnpj, String login, String senha) {
-        super(name, datansc, email, login, senha);
-        this.cnpj = cnpj;
+    public PessoaJuridica(String endereco, String numeroTelefonico, String CNPJ, String razaoSocial) {
+        super(endereco, numeroTelefonico);
+        this.setRazaoSocial(razaoSocial);
+        this.CNPJ = CNPJ;
     }
 
-    public String getCnpj() {
-        return this.cnpj;
+    public String getRazaoSocial() {
+        return razaoSocial;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
     }
 
 }
