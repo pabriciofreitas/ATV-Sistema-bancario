@@ -37,20 +37,27 @@ public class Conta {
 
     // sacar um valor //150 // saldo 50 // limite 100
     public String sacar(double valor) {
-        if (valor<= 0) {
-            return "Por favor insira um valor Valido!";
-                 
-        } else if (valor > this.saldo ) {
-            if(valor > this.saldo+ this.limite){
+        if (valor <= 0) {
+            return "Por favor insira um valor Válido!";
+
+        } else if (valor > this.saldo) {
+
+            if (valor > this.saldo + this.limite) {
                 return "Sem saldo!!";
-            }else{  limite 0 ; saldo - 100
-            double valor1= -150 - 50     // valor1= valor - saldo
-            double valor2= 100 - 100              //   limite - valor1
-                this.saldo
+            } else {
+                double saldoControler = this.saldo;
+
+                if (saldoControler - valor >= -100) {
+
+                    this.saldo = this.saldo - valor;
+                    return "Saque bem sucedido \n Seu saldo é" + saldo + "";
+                } else {
+                    return "Sem saldo";
+                }
             }
-        } else if (this.status == true) {
-            this.saldo = this.saldo - valor;
-            System.out.println("Operação realizada com sucesso.");
+        } else {
+            this.saldo -= valor;
+            return "Saque bem sucedido \n Seu saldo é" + saldo + "";
         }
 
     }

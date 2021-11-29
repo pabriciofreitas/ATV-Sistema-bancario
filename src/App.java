@@ -266,8 +266,8 @@ public class App {
 
   public static void sacar() {
     double valorSaque = Double.parseDouble(JOptionPane.showInputDialog(null, "> Valor do saque: "));
-    ContaPessoaLogada.sacar(valorSaque);
-    JOptionPane.showMessageDialog(null, "saque bem sucessedido");
+
+    JOptionPane.showMessageDialog(null, ContaPessoaLogada.sacar(valorSaque));
   }
 
   public static void depositar() {
