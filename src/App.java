@@ -229,7 +229,7 @@ public class App {
     for (int i = 0; i < t1; i++) {
       if (listaPessoaFisica.get(i).getConta().getSenha().equals(senha)
           && listaPessoaFisica.get(i).getCPF().equals(CPF)) {
-        numContaPessoaLogada = listaPessoaJuridica.get(i).getConta().getNumConta();
+        ContaPessoaLogada = listaPessoaFisica.get(i).getConta();
         return true;
       }
     }
@@ -266,7 +266,7 @@ public class App {
 
   public static void sacar() {
     double valorSaque = Double.parseDouble(JOptionPane.showInputDialog(null, "> Valor do saque: "));
-
+    ContaPessoaLogada.sacar(valorSaque);
     JOptionPane.showMessageDialog(null, "saque bem sucessedido");
   }
 
