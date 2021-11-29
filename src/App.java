@@ -3,7 +3,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import conta.Cliente;
 import conta.Conta;
 import conta.PessoaFisica;
 import conta.PessoaJuridica;
@@ -11,7 +10,8 @@ import conta.PessoaJuridica;
 public class App {
   public static List<PessoaFisica> listaPessoaFisica = new ArrayList<>();
   public static List<PessoaJuridica> listaPessoaJuridica = new ArrayList<>();
-  public static Cliente clienteLogado;
+  public static String credencialPessoaLogada;
+  public static String senhaPessoaLogada;
   // PessoaFisica kleber = new PessoaFisica("nome", "cpf", "43124214", "421412",
   // "1234", "123");
 
@@ -24,8 +24,8 @@ public class App {
     }
 
   }
-  
-   public static void tentaNovamenteTipo() {
+
+  public static void tentaNovamenteTipo() {
     int y = JOptionPane.showConfirmDialog(null, " DESEJA TENTAR NOVAMENTE ? ", "  ", JOptionPane.YES_NO_OPTION);
     if (y == JOptionPane.NO_OPTION) {
       JOptionPane.showMessageDialog(null, "VOLTANDO AO MENU...");
@@ -89,10 +89,23 @@ public class App {
     }
   }
 
+  public static void imprimir() {
+    int t = listaPessoaFisica.size();
+    int t1 = listaPessoaJuridica.size();
+
+    for (int i = 0; i < t1; i++) {
+      System.out.println("Juridica  " + listaPessoaJuridica.get(i).getConta().getNumConta());
+    }
+    for (int i = 0; i < t; i++) {
+      System.out.println("Fisica  " + listaPessoaFisica.get(i).getConta().getNumConta());
+    }
+  }
+
   public static void menuADM() {
     int opcaoADM = 0;
     while (opcaoADM != 5) {
-      opcaoADM = Integer.parseInt(JOptionPane.showInputDialog(null, "1 - ABRIR CONTA\n"+ "2 - DESLOGAR\n" + "3 - SAIR"));
+      opcaoADM = Integer
+          .parseInt(JOptionPane.showInputDialog(null, "1 - ABRIR CONTA\n" + "2 - DESLOGAR\n" + "3 - SAIR"));
       if (opcaoADM == 2) {
         login();
         break;
@@ -127,13 +140,13 @@ public class App {
   }
 
   public static void login() {
-    String CPF, senha;
-    CPF = JOptionPane.showInputDialog("DIGITE SEU CPF:");
-    senha = JOptionPane.showInputDialog("DIGITE SUA SENHA:");
 
-    if ("1".equals(CPF) && "1".equals(senha)) {
+    String credencial = JOptionPane.showInputDialog("DIGITE SEU CPF:");
+    String senha = JOptionPane.showInputDialog("DIGITE SUA SENHA:");
+
+    if ("1".equals(credencial) && "1".equals(senha)) {
       menuADM();
-    } else if (verificarCliente(CPF, senha)) {
+    } else if (verificarClienteCPF(credencial, senha) || verificarClienteCNPJ(credencial, senha)) {
       menuUsuario();
     } else {
       JOptionPane.showMessageDialog(null, "LOGIN OU SENHA ESTÃO INCORRETOS", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -148,30 +161,39 @@ public class App {
     if ("F".equals(tipoPessoa) || "f".equals(tipoPessoa)) {
 
       String nomeTitular = JOptionPane.showInputDialog("> Nome: ");
-      String CPF = JOptionPane.showInputDialog("> CPF: ");
+      String CPF;
+      do {
+        CPF = JOptionPane.showInputDialog("> CPF: ");
+      } while (!VerificarCPF(CPF));
+
       String numeroTelefone = JOptionPane.showInputDialog("> Telefone: ");
       String endereco = JOptionPane.showInputDialog("> Endereço: ");
-
+      String senha = JOptionPane.showInputDialog("> senha: ");
       PessoaFisica newPessoaFisica = new PessoaFisica(endereco, numeroTelefone, CPF, nomeTitular);
+      Conta conta = newPessoaFisica.getConta();
+      conta.AbrirConta(senha);
       listaPessoaFisica.add(newPessoaFisica);
-      System.out.println(listaPessoaFisica.get(0).getNomeTitular());
-
+      // System.out.println(listaPessoaFisica.get(0).getNomeTitular());
     } else if ("J".equals(tipoPessoa) || "j".equals(tipoPessoa)) {
       // conta.PessoaJuridica.PessoaJuridica(String endereco, String numeroTelefonico,
       // String CNPJ, String razaoSocial)
       String razaoSocial = JOptionPane.showInputDialog("> Razão Social: ");
-      String CNPJ = JOptionPane.showInputDialog("> CNPJ: ");
+      String CNPJ;
+      do {
+        CNPJ = JOptionPane.showInputDialog("> CNPJ: ");
+      } while (!VerificarCNPJ(CNPJ));
+
       String numeroTelefone = JOptionPane.showInputDialog("> Telefone: ");
       String endereco = JOptionPane.showInputDialog("> Endereço: ");
-      int senha = Integer.parseInt(JOptionPane.showInputDialog("> senha: "));
+      String senha = JOptionPane.showInputDialog("> senha: ");
 
       PessoaJuridica newPessoaJuridica = new PessoaJuridica(endereco, numeroTelefone, CNPJ, razaoSocial);
       Conta conta = newPessoaJuridica.getConta();
       conta.AbrirConta(senha);
       listaPessoaJuridica.add(newPessoaJuridica);
 
-      System.out.println(listaPessoaJuridica.get(0).getConta().getNumConta());
-    }else{
+      // System.out.println(listaPessoaJuridica.get(0).getConta().getNumConta());
+    } else {
       JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA", "ERRO", JOptionPane.ERROR_MESSAGE);
       tentaNovamenteTipo();
     }
@@ -185,16 +207,60 @@ public class App {
     abrirConta();
   }
 
-  public static Boolean verificarCliente(String id, String senha) {
-    // lista[1,2,3] 3
-    // for (int index = 0; index < listaClientes.size(); index++) {
-    // if (listaClientes.get(index).getCPF().equals(id) &&
-    // listaClientes.get(index).getSenha().equals(senha)) {
-    // clienteLogado = listaClientes.get(index);
-    // return true;
-    // }
-    // }
+  public static Boolean verificarClienteCNPJ(String CNPJ, String senha) {
+
+    int t1 = listaPessoaJuridica.size();
+
+    for (int i = 0; i < t1; i++) {
+      if (listaPessoaJuridica.get(i).getConta().getSenha().equals(senha)
+          && listaPessoaJuridica.get(i).getCNPJ().equals(CNPJ)) {
+        credencialPessoaLogada = CNPJ;
+        senhaPessoaLogada = senha;
+        return true;
+      }
+    }
     return false;
+  }
+
+  public static Boolean verificarClienteCPF(String CPF, String senha) {
+
+    int t1 = listaPessoaFisica.size();
+
+    for (int i = 0; i < t1; i++) {
+      if (listaPessoaFisica.get(i).getConta().getSenha().equals(senha)
+          && listaPessoaFisica.get(i).getCPF().equals(CPF)) {
+        credencialPessoaLogada = CPF;
+        senhaPessoaLogada = senha;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public static Boolean VerificarCPF(String CPF) {
+
+    int t1 = listaPessoaFisica.size();
+
+    for (int i = 0; i < t1; i++) {
+      if (listaPessoaFisica.get(i).getCPF().equals(CPF)) {
+        JOptionPane.showMessageDialog(null, "CPF já cadastrado tente novamente", "ERRO", JOptionPane.ERROR_MESSAGE);
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public static Boolean VerificarCNPJ(String CNPJ) {
+
+    int t1 = listaPessoaJuridica.size();
+
+    for (int i = 0; i < t1; i++) {
+      if (listaPessoaJuridica.get(i).getCNPJ().equals(CNPJ)) {
+        JOptionPane.showMessageDialog(null, "CNPJ já cadastrado tente novamente", "ERRO", JOptionPane.ERROR_MESSAGE);
+        return false;
+      }
+    }
+    return true;
   }
   // =============================================================######### FUNÇÃO
   // DE CLIENTE ==========================================

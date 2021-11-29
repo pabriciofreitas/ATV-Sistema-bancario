@@ -7,7 +7,15 @@ public class PessoaJuridica extends Cliente {
     public PessoaJuridica(String endereco, String numeroTelefonico, String CNPJ, String razaoSocial) {
         super(endereco, numeroTelefonico);
         this.setRazaoSocial(razaoSocial);
-        this.CNPJ = CNPJ;
+        this.setCNPJ(CNPJ);
+    }
+
+    public String getCNPJ() {
+        return CNPJ;
+    }
+
+    public void setCNPJ(String cNPJ) {
+        this.CNPJ = cNPJ;
     }
 
     public String getRazaoSocial() {

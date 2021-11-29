@@ -9,16 +9,21 @@ public class Conta {
     private double saldo = 0;
     private float limite = 0;
     private int numConta;
-    private int senha;
+    private String senha;
     // COnta
     private static int numero_livre = 1000;
 
-    public Conta() {
+    public void AbrirConta(String senha) {
+        this.setSenha(senha);
         this.numConta = Conta.numero_livre;
         Conta.numero_livre++;
     }
 
-    public void AbrirConta(int senha) {
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 
