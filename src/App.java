@@ -10,8 +10,8 @@ import conta.PessoaJuridica;
 public class App {
   public static List<PessoaFisica> listaPessoaFisica = new ArrayList<>();
   public static List<PessoaJuridica> listaPessoaJuridica = new ArrayList<>();
-  public static String credencialPessoaLogada;
-  public static String senhaPessoaLogada;
+  public static Conta ContaPessoaLogada;
+
   // PessoaFisica kleber = new PessoaFisica("nome", "cpf", "43124214", "421412",
   // "1234", "123");
 
@@ -214,8 +214,8 @@ public class App {
     for (int i = 0; i < t1; i++) {
       if (listaPessoaJuridica.get(i).getConta().getSenha().equals(senha)
           && listaPessoaJuridica.get(i).getCNPJ().equals(CNPJ)) {
-        credencialPessoaLogada = CNPJ;
-        senhaPessoaLogada = senha;
+        ContaPessoaLogada = listaPessoaJuridica.get(i).getConta();
+
         return true;
       }
     }
@@ -229,8 +229,7 @@ public class App {
     for (int i = 0; i < t1; i++) {
       if (listaPessoaFisica.get(i).getConta().getSenha().equals(senha)
           && listaPessoaFisica.get(i).getCPF().equals(CPF)) {
-        credencialPessoaLogada = CPF;
-        senhaPessoaLogada = senha;
+        numContaPessoaLogada = listaPessoaJuridica.get(i).getConta().getNumConta();
         return true;
       }
     }
@@ -266,8 +265,8 @@ public class App {
   // DE CLIENTE ==========================================
 
   public static void sacar() {
-    // clienteLogado.
-    // hevelin
+    double valorSaque = Double.parseDouble(JOptionPane.showInputDialog(null, "> Valor do saque: "));
+
     JOptionPane.showMessageDialog(null, "saque bem sucessedido");
   }
 
