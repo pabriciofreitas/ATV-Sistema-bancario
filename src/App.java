@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 
 import conta.Conta;
@@ -142,7 +141,7 @@ public class App {
 
   public static void login() {
 
-    String credencial = JOptionPane.showInputDialog("DIGITE SEU CPF:");
+    String credencial = JOptionPane.showInputDialog("DIGITE SEU CPF OU CNPJ:");
     String senha = JOptionPane.showInputDialog("DIGITE SUA SENHA:");
 
     if ("1".equals(credencial) && "1".equals(senha)) {
