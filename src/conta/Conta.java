@@ -62,6 +62,15 @@ public class Conta {
 
     }
 
+    public String depositar(double valor) {
+        if (valor > 0) {
+            this.saldo += valor;
+            return "Deposito bem sucedido!! \nSeu novo saldo é " + this.saldo;
+
+        } else {
+            return "Valor invalido!!";
+        }
+    }
     // protected String tipo;
     // private boolean status;
 

@@ -8,10 +8,11 @@ import conta.PessoaFisica;
 import conta.PessoaJuridica;
 
 public class App {
+
   public static List<PessoaFisica> listaPessoaFisica = new ArrayList<>();
   public static List<PessoaJuridica> listaPessoaJuridica = new ArrayList<>();
   public static Conta ContaPessoaLogada;
-
+  public static Conta ContaPessoaTransferir;
   // PessoaFisica kleber = new PessoaFisica("nome", "cpf", "43124214", "421412",
   // "1234", "123");
 
@@ -173,6 +174,7 @@ public class App {
       Conta conta = newPessoaFisica.getConta();
       conta.AbrirConta(senha);
       listaPessoaFisica.add(newPessoaFisica);
+      listaPessoaFisica.add(newPessoaFisica);
       // System.out.println(listaPessoaFisica.get(0).getNomeTitular());
     } else if ("J".equals(tipoPessoa) || "j".equals(tipoPessoa)) {
       // conta.PessoaJuridica.PessoaJuridica(String endereco, String numeroTelefonico,
@@ -271,12 +273,40 @@ public class App {
   }
 
   public static void depositar() {
-    // pabricio
+    double valorDepositar = Double.parseDouble(JOptionPane.showInputDialog(null, "> Valor do deposito: "));
+
+    JOptionPane.showMessageDialog(null, ContaPessoaLogada.depositar(valorDepositar));
   }
 
   public static void transferir() {
-    // kleber
+    double valorTransferir = Double.parseDouble(JOptionPane.showInputDialog(null, "> Valor a transferir: "));
+    int numeroConta = Integer.parseInt(JOptionPane.showInputDialog(null, "> numero da conta: "));
+    if(verificarClienteConta)
+    JOptionPane.showMessageDialog(null, ContaPessoaLogada.sacar(valorSaque));
   }
+
+
+  public static Boolean verificarClienteConta(int numeroConta) {
+
+    int t1 = listaPessoaFisica.size();
+
+    for (int i = 0; i < t1; i++) {
+      if (listaPessoaFisica.get(i).getConta().getNumConta() == numeroConta) {
+        ContaPessoaTransferir = listaPessoaFisica.get(i).getConta();
+        return true;
+      }
+    }
+    int t2 = listaPessoaJuridica.size();
+    for (int i = 0; i < t2; i++) {
+      if (listaPessoaJuridica.get(i).getConta().getNumConta()==numeroConta) {
+        ContaPessoaTransferir = listaPessoaJuridica.get(i).getConta();
+        return true;
+      }
+    }
+
+    return false;
+  }
+
 
   public static void extrato() {
     // kleber
