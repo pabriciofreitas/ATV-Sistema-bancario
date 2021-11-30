@@ -23,6 +23,10 @@ public class Conta {
         return senha;
     }
 
+    public double getSaldo() {
+        return this.saldo;
+    }
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -50,14 +54,14 @@ public class Conta {
                 if (saldoControler - valor >= -100) {
 
                     this.saldo = this.saldo - valor;
-                    return "Saque bem sucedido \n Seu saldo é" + saldo + "";
+                    return "Saque bem sucedido";
                 } else {
                     return "Sem saldo";
                 }
             }
         } else {
             this.saldo -= valor;
-            return "Saque bem sucedido \n Seu saldo é" + saldo + "";
+            return "Saque bem sucedido";
         }
 
     }
