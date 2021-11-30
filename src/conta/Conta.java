@@ -1,6 +1,9 @@
 
 package conta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author hevelin
@@ -12,6 +15,7 @@ public class Conta {
     private String senha;
     // COnta
     private static int numero_livre = 1000;
+    public List<String> extrato = new ArrayList<>();
 
     public void AbrirConta(String senha) {
         this.setSenha(senha);
@@ -69,7 +73,7 @@ public class Conta {
     public String depositar(double valor) {
         if (valor > 0) {
             this.saldo += valor;
-            return "Deposito bem sucedido!! \nSeu novo saldo é " + this.saldo;
+            return "Deposito bem sucedido";
 
         } else {
             return "Valor invalido!!";

@@ -269,13 +269,21 @@ public class App {
   public static void sacar() {
     double valorSaque = Double.parseDouble(JOptionPane.showInputDialog(null, "> Valor do saque: "));
 
-    JOptionPane.showMessageDialog(null, ContaPessoaLogada.sacar(valorSaque));
+    String operacao = ContaPessoaLogada.sacar(valorSaque);
+    JOptionPane.showMessageDialog(null, operacao);
+    if (operacao.equals("Saque bem sucedido")) {
+      ContaPessoaLogada.extrato.add("Saque " + valorSaque + "");
+    }
   }
 
   public static void depositar() {
     double valorDepositar = Double.parseDouble(JOptionPane.showInputDialog(null, "> Valor do deposito: "));
+    String operacao = ContaPessoaLogada.depositar(valorDepositar);
+    JOptionPane.showMessageDialog(null, operacao);
+    if (operacao.equals("Deposito bem sucedido")) {
+      ContaPessoaLogada.extrato.add("Depositou " + valorDepositar + "");
 
-    JOptionPane.showMessageDialog(null, ContaPessoaLogada.depositar(valorDepositar));
+    }
   }
 
   public static void transferir() {
@@ -293,6 +301,10 @@ public class App {
         if (resultado.equals("Saque bem sucedido")) {
           ContaPessoaTransferir.depositar(valorTransferir);
           JOptionPane.showMessageDialog(null, "Transferencia bem sucedida");
+          ContaPessoaLogada.extrato
+              .add("Transferiu para conta " + ContaPessoaTransferir.getNumConta() + " - R$ " + valorTransferir + ".");
+          ContaPessoaTransferir.extrato
+              .add("recebeu de " + ContaPessoaLogada.getNumConta() + " - R$ " + valorTransferir + ".");
           passou = false;
         } else {
           JOptionPane.showMessageDialog(null, "Operação não concluida, " + resultado);
@@ -329,8 +341,11 @@ public class App {
   }
 
   public static void extrato() {
-
-    // kleber
+    String extrato = "Seu extrato é\n";
+    for (int i = 0; i < ContaPessoaLogada.extrato.size(); i++) {
+      extrato = extrato + "\n" + ContaPessoaLogada.extrato.get(i);
+    }
+    JOptionPane.showMessageDialog(null, extrato + "\nsaldo: " + ContaPessoaLogada.getSaldo());
   }
 
   /**
