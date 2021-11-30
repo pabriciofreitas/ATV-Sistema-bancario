@@ -279,26 +279,31 @@ public class App {
   }
 
   public static void transferir() {
+    System.out.println(listaPessoaJuridica.get(0).getConta().getNumConta());
     double valorTransferir = Double.parseDouble(JOptionPane.showInputDialog(null, "> Valor a transferir: "));
-    int numeroConta = Integer.parseInt(JOptionPane.showInputDialog(null, "> numero da conta: "));
-    if(verificarClienteConta)
-    JOptionPane.showMessageDialog(null, ContaPessoaLogada.sacar(valorSaque));
+    int numcont = Integer.parseInt(JOptionPane.showInputDialog(null, "> numero da conta: "));
+    if (verificarClienteConta(numcont) == true){
+        System.out.println("Certo");
+    }else{
+        System.out.println("continua errado");
+    }
+    
+    
   }
 
 
-  public static Boolean verificarClienteConta(int numeroConta) {
-
+  public static Boolean verificarClienteConta(int numcont) {
     int t1 = listaPessoaFisica.size();
 
     for (int i = 0; i < t1; i++) {
-      if (listaPessoaFisica.get(i).getConta().getNumConta() == numeroConta) {
+      if (listaPessoaFisica.get(i).getConta().getNumConta() == numcont) {
         ContaPessoaTransferir = listaPessoaFisica.get(i).getConta();
         return true;
       }
     }
     int t2 = listaPessoaJuridica.size();
     for (int i = 0; i < t2; i++) {
-      if (listaPessoaJuridica.get(i).getConta().getNumConta()==numeroConta) {
+      if (listaPessoaJuridica.get(i).getConta().getNumConta()==numcont) {
         ContaPessoaTransferir = listaPessoaJuridica.get(i).getConta();
         return true;
       }
@@ -309,6 +314,8 @@ public class App {
 
 
   public static void extrato() {
+      
+      
     // kleber
   }
 
