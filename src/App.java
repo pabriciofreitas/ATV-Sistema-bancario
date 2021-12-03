@@ -1,8 +1,9 @@
+import Visual.menu_adm;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
-
+import Visual.TelaDeLogin;
 import conta.Conta;
 import conta.PessoaFisica;
 import conta.PessoaJuridica;
@@ -352,7 +353,8 @@ public class App {
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-    login();
+    TelaDeLogin telaDeLogin = new TelaDeLogin();
+    telaDeLogin.setVisible(true);
 
     /*
      * cadstro o cliente Cliente primeiroCliente = new Cliente("Carlos",
