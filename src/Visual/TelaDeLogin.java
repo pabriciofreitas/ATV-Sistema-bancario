@@ -17,10 +17,16 @@ import persistencia.controlador;
  * @author pabri
  */
 public class TelaDeLogin extends javax.swing.JFrame {
-    controlador controlador = new controlador();
+    public controlador controlador = new controlador();
     /**
      * Creates new form login
      */
+    public controlador getControlador(){
+        return this.controlador;
+    }
+    public void setControlador(controlador controlador){
+         this.controlador=controlador;
+    }
     public TelaDeLogin() {
         initComponents();
     }
@@ -123,9 +129,9 @@ public class TelaDeLogin extends javax.swing.JFrame {
         String credencial = tf_credencial.getText();  
         String senha = tf_senha.getText();  
         if ("1".equals(credencial) && "1".equals(senha)) {
-            this.dispose();
-            new menu_adm().setVisible(true);
-        } else if (controlador.validaCPF(credencial,senha ) || validaCNPJ(credencial,senha )) {
+            this.setVisible(false);
+            new menu_adm(controlador).setVisible(true);
+        } else if (controlador.validaUsuario(credencial, senha)) {
             
             this.dispose();
             new menu_usuario().setVisible(true);

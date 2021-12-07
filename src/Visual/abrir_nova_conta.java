@@ -7,6 +7,7 @@ package Visual;
 
 import conta.PessoaFisica;
 import conta.PessoaJuridica;
+import javax.swing.JOptionPane;
 import persistencia.controlador;
 
 /**
@@ -14,11 +15,12 @@ import persistencia.controlador;
  * @author pabri
  */
 public class abrir_nova_conta extends javax.swing.JFrame {
-    controlador controlador = new controlador();
+    controlador controlador;
     /**
      * Creates new form abrir_nova_conta
      */
-    public abrir_nova_conta() {
+    public abrir_nova_conta(controlador controlador) {
+        this.controlador = controlador;
         initComponents();
         pane_pessoa_juridica.setVisible(false);
         pane_pessoa_fisica.setVisible(false);
@@ -41,14 +43,14 @@ public class abrir_nova_conta extends javax.swing.JFrame {
         pane_pessoa_fisica = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        tf_nome = new javax.swing.JTextField();
+        tf_cpf = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        tf_telefone_pessoa_fisica = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        tf_endereco_pessoa_fisica = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        tf_senha_pessoa_fisica = new javax.swing.JTextField();
         btn_cadastrar_pessoa_fisica = new javax.swing.JButton();
         pane_pessoa_juridica = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -105,39 +107,39 @@ public class abrir_nova_conta extends javax.swing.JFrame {
 
         jLabel9.setText("Nome completo");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        tf_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                tf_nomeActionPerformed(evt);
             }
         });
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        tf_cpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                tf_cpfActionPerformed(evt);
             }
         });
 
         jLabel11.setText("Telefone");
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        tf_telefone_pessoa_fisica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                tf_telefone_pessoa_fisicaActionPerformed(evt);
             }
         });
 
         jLabel12.setText("Endereço");
 
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        tf_endereco_pessoa_fisica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                tf_endereco_pessoa_fisicaActionPerformed(evt);
             }
         });
 
         jLabel13.setText("Senha");
 
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        tf_senha_pessoa_fisica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                tf_senha_pessoa_fisicaActionPerformed(evt);
             }
         });
 
@@ -157,15 +159,15 @@ public class abrir_nova_conta extends javax.swing.JFrame {
                     .addGroup(pane_pessoa_fisicaLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pane_pessoa_fisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_telefone_pessoa_fisica, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_endereco_pessoa_fisica, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_senha_pessoa_fisica, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)))
                     .addGroup(pane_pessoa_fisicaLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
@@ -178,23 +180,23 @@ public class abrir_nova_conta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_telefone_pessoa_fisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_endereco_pessoa_fisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_senha_pessoa_fisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_cadastrar_pessoa_fisica)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -387,29 +389,38 @@ public class abrir_nova_conta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_senha_pessoa_juridicaActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void tf_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_cpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_tf_cpfActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void tf_telefone_pessoa_fisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_telefone_pessoa_fisicaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_tf_telefone_pessoa_fisicaActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void tf_endereco_pessoa_fisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_endereco_pessoa_fisicaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_tf_endereco_pessoa_fisicaActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void tf_senha_pessoa_fisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_senha_pessoa_fisicaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_tf_senha_pessoa_fisicaActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void tf_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_tf_nomeActionPerformed
 
     private void btn_cadastrar_pessoa_fisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrar_pessoa_fisicaActionPerformed
-                
-//this.dispose();
+    String end = tf_endereco_pessoa_fisica.getText();
+    String tel = tf_telefone_pessoa_fisica.getText();
+    String cnpj = tf_cpf.getText();
+    String rs = tf_nome.getText();
+    String s = tf_senha_pessoa_fisica.getText();
+    PessoaFisica novaPessoa = new PessoaFisica(end, tel, cnpj, rs );
+    novaPessoa.getConta().AbrirConta(s);
+    controlador.listaPessoaFisica.add(novaPessoa);  
+    JOptionPane.showMessageDialog(null, " Conta cadastrada com sucesso");
+    System.out.println(controlador.listaPessoaFisica.get(0).getNomeTitular());
+    this.dispose();
     }//GEN-LAST:event_btn_cadastrar_pessoa_fisicaActionPerformed
 
     private void btn_cadastrar_pessoa_juridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrar_pessoa_juridicaActionPerformed
@@ -421,43 +432,13 @@ String s = tf_senha_pessoa_juridica.getText();
  PessoaJuridica novaPessoa = new PessoaJuridica(end, tel, cnpj, rs );
  novaPessoa.getConta().AbrirConta(s);
  controlador.listaPessoaJuridica.add(novaPessoa);
+    //System.out.println(controlador.listaPessoaJuridica.get(0).getRazaoSocial());
+ 
     this.dispose();
     }//GEN-LAST:event_btn_cadastrar_pessoa_juridicaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(abrir_nova_conta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(abrir_nova_conta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(abrir_nova_conta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(abrir_nova_conta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new abrir_nova_conta().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cadastrar_pessoa_fisica;
@@ -475,19 +456,19 @@ String s = tf_senha_pessoa_juridica.getText();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel pane_pessoa_fisica;
     private javax.swing.JPanel pane_pessoa_juridica;
     private javax.swing.JRadioButton rb_pessoa_fisica;
     private javax.swing.JRadioButton rb_pessoa_juridica;
     private javax.swing.JTextField tf_cnpj;
+    private javax.swing.JTextField tf_cpf;
+    private javax.swing.JTextField tf_endereco_pessoa_fisica;
     private javax.swing.JTextField tf_endereco_pessoa_juridica;
+    private javax.swing.JTextField tf_nome;
     private javax.swing.JTextField tf_razao_social;
+    private javax.swing.JTextField tf_senha_pessoa_fisica;
     private javax.swing.JTextField tf_senha_pessoa_juridica;
+    private javax.swing.JTextField tf_telefone_pessoa_fisica;
     private javax.swing.JTextField tf_telefone_pessoa_juridica;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,7 @@
 package Visual;
 
+import persistencia.controlador;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,11 +13,12 @@ package Visual;
  * @author pabri
  */
 public class menu_adm extends javax.swing.JFrame {
-
+    controlador controlador;
     /**
      * Creates new form menu_adm
      */
-    public menu_adm() {
+    public menu_adm(controlador controlador) {
+        this.controlador = controlador;
         initComponents();
     }
 
@@ -95,7 +98,7 @@ public class menu_adm extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_deslogarActionPerformed
 
     private void btn_abrir_nova_contaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_abrir_nova_contaActionPerformed
-       new abrir_nova_conta().setVisible(true);
+      new abrir_nova_conta(controlador).setVisible(true);
     }//GEN-LAST:event_btn_abrir_nova_contaActionPerformed
 
     private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
@@ -105,37 +108,7 @@ public class menu_adm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menu_adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menu_adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menu_adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menu_adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new menu_adm().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_abrir_nova_conta;
