@@ -138,15 +138,15 @@ public class menu_usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_depositarActionPerformed
 
     private void btn_sacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sacarActionPerformed
-        new sacar().setVisible(true);
+        new sacar(controlador).setVisible(true);
     }//GEN-LAST:event_btn_sacarActionPerformed
 
     private void btn_transferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transferirActionPerformed
-          new transferir().setVisible(true);
+          new transferir(controlador).setVisible(true);
     }//GEN-LAST:event_btn_transferirActionPerformed
 
     private void btn_extratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_extratoActionPerformed
-         System.out.println(controlador.ContaPessoaLogada.getSaldo());
+          new extrato(controlador).setVisible(true);
 //new extrato().setVisible(true);
     }//GEN-LAST:event_btn_extratoActionPerformed
 

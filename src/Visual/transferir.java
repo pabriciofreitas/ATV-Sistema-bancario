@@ -5,19 +5,64 @@
  */
 package Visual;
 
+import javax.swing.JOptionPane;
+import persistencia.controlador;
+
 /**
  *
  * @author pabri
  */
 public class transferir extends javax.swing.JFrame {
-
-    /**
-     * Creates new form transferir
-     */
-    public transferir() {
+    controlador controlador;
+    
+    public transferir(controlador controlador) {
         initComponents();
+        controlador = controlador;
+    }
+    public String transferirValor(double valorTransferir, int numero) {  
+    if (valorTransferir <= 0) {
+      return "Valor invalido!!";
+    }else{
+      if (verificarClienteConta(numero)) {
+        String resultado = controlador.ContaPessoaLogada.sacar(valorTransferir);
+        if (resultado.equals("Saque bem sucedido")) {
+          controlador.ContaPessoaTransferir.depositar(valorTransferir);
+          
+          controlador.ContaPessoaLogada.extrato.add("Transferiu para conta " + controlador.ContaPessoaTransferir.getNumConta() + " - R$ " + valorTransferir + ".");
+          controlador.ContaPessoaTransferir.extrato
+              .add("recebeu de " + controlador.ContaPessoaLogada.getNumConta() + " - R$ " + valorTransferir + ".");
+         return "Transferencia bem sucedida";
+        } else {
+          return "Operação não concluida, " + resultado;
+          
+        }
+
+      } else {
+        return "Conta não encontrada!!";
+      }
+    }
+ 
+  }
+   
+    public Boolean verificarClienteConta(int numcont) {
+    int t1 = controlador.listaPessoaFisica.size();
+
+    for (int i = 0; i < t1; i++) {
+      if (controlador.listaPessoaFisica.get(i).getConta().getNumConta() == numcont) {
+        controlador.ContaPessoaTransferir = controlador.listaPessoaFisica.get(i).getConta();
+        return true;
+      }
+    }
+    int t2 = controlador.listaPessoaJuridica.size();
+    for (int i = 0; i < t2; i++) {
+      if (controlador.listaPessoaJuridica.get(i).getConta().getNumConta() == numcont) {
+        controlador.ContaPessoaTransferir = controlador.listaPessoaJuridica.get(i).getConta();
+        return true;
+      }
     }
 
+    return false;
+  }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,12 +72,14 @@ public class transferir extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        tf_valor_transferencia = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tf_numero_conta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         lb_resultado_transferir = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        transferir = new javax.swing.JButton();
+        lb_status_transferir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -43,21 +90,32 @@ public class transferir extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Transferir");
 
+        transferir.setText("transferir");
+        transferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb_resultado_transferir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lb_status_transferir, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tf_valor_transferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(tf_numero_conta, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_resultado_transferir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(transferir)
+                .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(153, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -65,66 +123,43 @@ public class transferir extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_valor_transferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_numero_conta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(lb_resultado_transferir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lb_resultado_transferir, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(transferir)
+                    .addComponent(lb_status_transferir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(transferir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(transferir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(transferir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(transferir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new transferir().setVisible(true);
-            }
-        });
-    }
+    
+    private void transferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferirActionPerformed
+    double valor = Double.parseDouble(tf_valor_transferencia.getText());
+    int numero = Integer.parseInt(tf_numero_conta.getText());
+    lb_status_transferir.setText(transferirValor(valor, numero));
+      
+    }//GEN-LAST:event_transferirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lb_resultado_transferir;
+    private javax.swing.JLabel lb_status_transferir;
+    private javax.swing.JTextField tf_numero_conta;
+    private javax.swing.JTextField tf_valor_transferencia;
+    private javax.swing.JButton transferir;
     // End of variables declaration//GEN-END:variables
 }

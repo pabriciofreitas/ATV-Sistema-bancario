@@ -37,7 +37,7 @@ public class depositar extends javax.swing.JFrame {
         btn_depositar = new javax.swing.JButton();
         lb_status_deposito = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Digite o valor do deposito:");
 
@@ -93,7 +93,11 @@ public class depositar extends javax.swing.JFrame {
        
        
         double valor = Double.parseDouble(tf_valor_deposito.getText());
-        lb_status_deposito.setText(controlador.ContaPessoaLogada.depositar(valor));
+        String status =controlador.ContaPessoaLogada.depositar(valor); 
+        lb_status_deposito.setText(status);
+        if(status.equals("Deposito bem sucedido")){
+            controlador.ContaPessoaLogada.extrato.add("Depositou R$" +valor+".");
+        }
         
         //this.dispose();
     }//GEN-LAST:event_btn_depositarActionPerformed
