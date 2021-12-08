@@ -156,7 +156,6 @@ public class TelaDeLogin extends javax.swing.JFrame {
             this.setVisible(false);
             new menu_adm(controlador).setVisible(true);
         } else if (validaUsuario(credencial,senha)) {
-            this.dispose();
             new menu_usuario(controlador).setVisible(true);
         } else {
           lb_error_login.setText("LOGIN OU SENHA ESTÃO INCORRETOS");

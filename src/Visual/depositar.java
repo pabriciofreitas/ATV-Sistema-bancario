@@ -6,19 +6,20 @@
 package Visual;
 
 import conta.Conta;
+import persistencia.controlador;
 
 /**
  *
  * @author pabri
  */
 public class depositar extends javax.swing.JFrame {
-    Conta contaPessoaLogada;
+    controlador controlador;
     /**
      * Creates new form depositar
      */
-    public depositar(Conta contaPessoaLogada) {
+    public depositar(controlador controlador) {
         initComponents();
-        contaPessoaLogada = contaPessoaLogada;
+        controlador = controlador;
     }
 
     /**
@@ -92,7 +93,7 @@ public class depositar extends javax.swing.JFrame {
        
        
         double valor = Double.parseDouble(tf_valor_deposito.getText());
-        lb_status_deposito.setText(contaPessoaLogada.depositar(valor));
+        lb_status_deposito.setText(controlador.ContaPessoaLogada.depositar(valor));
         
         //this.dispose();
     }//GEN-LAST:event_btn_depositarActionPerformed

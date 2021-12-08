@@ -134,7 +134,7 @@ public class menu_usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_depositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_depositarActionPerformed
-          new depositar(controlador.ContaPessoaLogada).setVisible(true);
+          new depositar(controlador).setVisible(true);
     }//GEN-LAST:event_btn_depositarActionPerformed
 
     private void btn_sacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sacarActionPerformed
