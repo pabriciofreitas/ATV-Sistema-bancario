@@ -17,12 +17,13 @@ import conta.PessoaJuridica;
  * @author pabri
  */
 public class controlador {
-  public List<PessoaFisica> listaPessoaFisica = new ArrayList<>();
-  public List<PessoaJuridica> listaPessoaJuridica = new ArrayList<>();
-  public Conta ContaPessoaLogada;
-  public Conta ContaPessoaTransferir;
+  public static List<PessoaFisica> listaPessoaFisica = new ArrayList<>();
+  public static List<PessoaJuridica> listaPessoaJuridica = new ArrayList<>();
+  public static Conta ContaPessoaLogada;
+  public static Conta ContaPessoaTransferir;
   public boolean validaUsuario(String credencial,String senha){
-      System.out.println(this.listaPessoaJuridica.get(0).getRazaoSocial());
+     // System.out.println(listaF.get(0).getNomeTitular());
+      //System.out.println(listaJ.get(0).getRazaoSocial());
     int t1 = this.listaPessoaJuridica.size();
 
     for (int i = 0; i < t1; i++) {
@@ -33,16 +34,16 @@ public class controlador {
       }
     }
     
-//    int t2 = listaPessoaFisica.size();;
-//
-//    for (int i = 0; i < t2; i++) {
-//      if (listaPessoaFisica.get(i).getConta().getSenha().equals(senha)
-//          && listaPessoaFisica.get(i).getCPF().equals(credencial)) {
-//        ContaPessoaLogada = listaPessoaFisica.get(i).getConta();
-//        return true;
-//      }
-//    }
-//    
+    int t2 = listaPessoaFisica.size();;;
+
+    for (int i = 0; i < t2; i++) {
+      if (listaPessoaFisica.get(i).getConta().getSenha().equals(senha)
+          && listaPessoaFisica.get(i).getCPF().equals(credencial)) {
+        ContaPessoaLogada = listaPessoaFisica.get(i).getConta();
+        return true;
+      }
+    }
+    
     return false;
   }
   

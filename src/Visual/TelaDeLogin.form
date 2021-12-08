@@ -28,16 +28,22 @@
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tf_credencial" min="-2" pref="183" max="-2" attributes="0"/>
-                  <Component id="lb_error_login" min="-2" pref="227" max="-2" attributes="0"/>
-                  <Component id="tf_senha" min="-2" pref="183" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lb_error_login" min="-2" pref="227" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="pw_senha" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tf_credencial" alignment="0" pref="183" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                       <Component id="btn_entrar" min="-2" pref="82" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -56,11 +62,11 @@
               <Component id="tf_credencial" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              <Component id="tf_senha" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btn_entrar" min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="pw_senha" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btn_entrar" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="lb_error_login" pref="16" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -77,11 +83,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Senha:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="tf_senha">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_senhaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -104,6 +105,11 @@
     <Component class="javax.swing.JTextField" name="tf_credencial">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_credencialActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pw_senha">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pw_senhaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

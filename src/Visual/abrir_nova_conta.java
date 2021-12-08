@@ -419,7 +419,6 @@ public class abrir_nova_conta extends javax.swing.JFrame {
     novaPessoa.getConta().AbrirConta(s);
     controlador.listaPessoaFisica.add(novaPessoa);  
     JOptionPane.showMessageDialog(null, " Conta cadastrada com sucesso");
-    System.out.println(controlador.listaPessoaFisica.get(0).getNomeTitular());
     this.dispose();
     }//GEN-LAST:event_btn_cadastrar_pessoa_fisicaActionPerformed
 
@@ -432,7 +431,7 @@ String s = tf_senha_pessoa_juridica.getText();
  PessoaJuridica novaPessoa = new PessoaJuridica(end, tel, cnpj, rs );
  novaPessoa.getConta().AbrirConta(s);
  controlador.listaPessoaJuridica.add(novaPessoa);
-    //System.out.println(controlador.listaPessoaJuridica.get(0).getRazaoSocial());
+ JOptionPane.showMessageDialog(null, " Conta cadastrada com sucesso");
  
     this.dispose();
     }//GEN-LAST:event_btn_cadastrar_pessoa_juridicaActionPerformed
