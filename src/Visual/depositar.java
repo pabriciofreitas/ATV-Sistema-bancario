@@ -89,10 +89,10 @@ public class depositar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_depositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_depositarActionPerformed
-       lb_status_deposito.setText("aaaa");
-       // contaPessoaLogada.getNumConta();
-       // double valor = Double.parseDouble(tf_valor_deposito.getText());
-       // lb_status_deposito.setText(contaPessoaLogada.depositar(valor));
+       
+       
+        double valor = Double.parseDouble(tf_valor_deposito.getText());
+        lb_status_deposito.setText(contaPessoaLogada.depositar(valor));
         
         //this.dispose();
     }//GEN-LAST:event_btn_depositarActionPerformed
